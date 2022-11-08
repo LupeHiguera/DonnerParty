@@ -1,0 +1,13 @@
+.center {
+    text-align: center;
+}
+svg {
+    width: 600px;
+    height: 400px;
+    border: 1px solid gray;
+}
+.svg2 {
+    width: 1000px;
+    height: 400px;
+    border: 1px solid gray;
+}

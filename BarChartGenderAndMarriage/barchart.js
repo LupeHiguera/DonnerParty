@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
     Promise.all([d3.csv('Data/donner_party_full_data.csv')])
         .then(function (values) {
             //console.log(values[0]);
-            var data = values[0];
-            var holder;
-            for (var i = 0; i < data.length; i++) {
+            const data = values[0];
+            let holder;
+            for (let i = 0; i < data.length; i++) {
                 holder = data[i];
                 if (holder["Sex"] == "M") {
                     demoData1[0].value++; // total males
