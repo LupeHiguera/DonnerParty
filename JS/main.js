@@ -13,19 +13,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     Promise.all([d3.csv('Data/donner_party_full_data.csv')])
     .then(function (values) {
-        console.log('loaded Donner Party data');
-        console.log(values.at(0).Age);
+        //console.log('loaded Donner Party data');
+        //console.log(values.at(0).Age);
         for(let x = 0; x < 89; x++){
-          console.log(values.at(x));
+          //console.log(values.at(x));
             if(values[0].at(x).Age <= 18){
                 children++;
-        console.log(children);
+        //console.log(children);
             }else if(values[0].at(x).Age <= 65){
                 adults++;
-        console.log(adults);
+        //console.log(adults);
             }else{
                 elders++;
-        console.log(elders);
+        //console.log(elders);
             }
         }
     });

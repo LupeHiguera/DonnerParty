@@ -1,3 +1,5 @@
+// written by alex wong
+
 var demoData1 = [
     { key: "totalMales", value: 0 },
     { key: "totalFemales", value: 0 },

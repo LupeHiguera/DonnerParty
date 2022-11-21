@@ -1,0 +1,36 @@
+.svg3 {
+    width: 580px;
+    height: 450px;
+    /* border: 1px solid gray; */
+}
+
+.LineGraphContainer {
+    /* border: 3px solid #000; */
+    padding: 5px;
+    width: 900px;
+    height: 500px;
+    border: 1px solid gray;
+}
+
+.LineGraphLeft {
+    width: 67%;
+    height: 490px;
+    float: left;
+    padding: 5px;
+    /* border: 2px solid red; */
+}
+
+.LineGraphRight {
+    width: 33%;
+    height: 490px;
+    float: left;
+    padding: 5px;
+    /* border: 2px solid red; */
+}
+
+.LineGraphSelect {
+    width: 200px;
+    font-size: 14px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
