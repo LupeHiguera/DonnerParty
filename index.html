@@ -30,13 +30,13 @@
     <!-- HTML for Deaths By Month Line Graph -->
     <div class="LineGraphContainer">
         <div class="LineGraphLeft">
-            <div id="LineGraphLeft1" >
+            <div id="LineGraphLeft1">
                 <label style="margin-left: 10px">Deaths By Month</label>
                 <svg class="svg3" id="SVG3"></svg>
             </div>
         </div>
         <div class="LineGraphRight">
-            <div >
+            <div>
                 <label style="margin-left: 40px;">Gender</label>
                 <select name="LineGraphDataSelectGender" id="LineGraphDataSelectGender" class="LineGraphSelect">
                     <option value="All">All</option>
@@ -52,7 +52,8 @@
                     <option value="AgeGroup4">50+</option>
                 </select>
                 <label style="margin-left: 40px;">Death Reason</label>
-                <select name="LineGraphDataSelectDeathReason" id="LineGraphDataSelectDeathReason" class="LineGraphSelect">
+                <select name="LineGraphDataSelectDeathReason" id="LineGraphDataSelectDeathReason"
+                    class="LineGraphSelect">
                     <option value="All">All</option>
                     <option value="Illness">Illness</option>
                     <option value="Non-Firearm Homicide">Non-Firearm Homicide</option>
@@ -62,22 +63,30 @@
                     <option value="Unknown">Unknown</option>
                 </select>
                 <label style="margin-left: 40px;">Death Outcome</label>
-                <select name="LineGraphDataSelectDeathOutcome" id="LineGraphDataSelectDeathOutcome" class="LineGraphSelect">
+                <select name="LineGraphDataSelectDeathOutcome" id="LineGraphDataSelectDeathOutcome"
+                    class="LineGraphSelect">
                     <option value="All">All</option>
                     <option value="Buried">Buried</option>
                     <option value="Cannibalized">Cannibalized</option>
                     <option value="Left behind">Left behind</option>
                     <option value="Unknown">Unknown</option>
                 </select>
-                <button style="margin-left: 40px; margin-top: 10px;" onclick="LineGraphDrawGraph();">Generate Graph</label>
+                <button style="margin-left: 40px; margin-top: 10px;" onclick="LineGraphDrawGraph();">Generate
+                    Graph</label>
             </div>
         </div>
     </div>
 
     <div class="SlopeGraphContainer">
         <div class="SlopeGraphLeft">
-            <div id="SlopeGraphLeft1" >
-                <label style="margin-left: 10px">Person to Donner Party Outcome</label>
+            <div id="SlopeGraphLeft1">
+                <label style="margin-left: 10px">Person -> Outcome</label>
+                <label> - Show Survivors?</label>
+                <select name="SlopeGraphSelect" id="SlopeGraphSelect">
+                    <option value="ShowSurvivors">Show Survivors</option>
+                    <option value="Don'tShowSurvivors">Don't Show Survivors</option>
+                </select>
+                <button onclick="SlopeGraphDrawGraph()">Generate Graph</button>
                 <svg class="svg4" id="SVG4"></svg>
             </div>
         </div>
