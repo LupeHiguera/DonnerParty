@@ -3,12 +3,14 @@
 <head>
     <title>Donner Party</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="LineGraphDeathsAndCauses/linegraph.js"></script>
-    <script src="BarChartGenderAndMarriage/barchart.js"></script>
+    <script src="JS/linegraph.js"></script>
+    <script src="JS/barchart.js"></script>
+    <script src="JS/slopegraph.js"></script>
     <script src="JS/main.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="CSS/default.css" />
     <link rel="stylesheet" href="CSS/LineGraph.css" />
+    <link rel="stylesheet" href="CSS/SlopeGraph.css" />
 </head>
 
 <body>
@@ -72,6 +74,14 @@
         </div>
     </div>
 
+    <div class="SlopeGraphContainer">
+        <div class="SlopeGraphLeft">
+            <div id="SlopeGraphLeft1" >
+                <label style="margin-left: 10px">Person to Donner Party Outcome</label>
+                <svg class="svg4" id="SVG4"></svg>
+            </div>
+        </div>
+    </div>
     <br />
     <svg id="SVG4"></svg>
     <br />
