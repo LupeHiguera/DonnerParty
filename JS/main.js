@@ -1,64 +1,69 @@
+var demoData1 = [
+  { key: "totalKids", value: 0 },
+  { key: "totalAdults", value: 0 },
+  { key: "totalElders", value: 0 },
+]
+
+
 document.addEventListener('DOMContentLoaded', function () {
+  Promise.all([d3.csv('Data/donner_party_full_data.csv')])
+      .then(function (values) {
+          console.log(values[0]);
+          const data = values[0];
+          let holder;
+          for (let i = 0; i < data.length; i++) {
+              holder = data[i];
+              if (Number(holder["Age"]) <= 18) {
+                  demoData1[0].value++;
+              }
+              else if (Number(holder["Age"]) >= 19) {
+                  demoData1[1].value++;
+              }
+              else {
+                  demoData1[2].value++;
+              }
+          }
+          console.log(demoData1);
+          DrawBarChart();
+      })
+});
 
-    // set the dimensions and margins of the graph
-    var width = 450
-    height = 450
-    margin = 40
+function DrawBarChart() {
+  const svg = d3.select('#SVG1');
+  svg.select('g').remove();
+  var g = svg.append("g").attr("transform", "translate(0,0)")
 
-    var radius = Math.min(width, height) / 2 - margin
+  g.append('text')
+      .attr('x', '65')
+      .attr('y', '50')
+      .text("Age Distributions")
+      .style("font-size", "20px")
 
-    let children = 0;
-    let adults = 0;
-    let elders = 0;
 
-    Promise.all([d3.csv('Data/donner_party_full_data.csv')])
-    .then(function (values) {
-        //console.log('loaded Donner Party data');
-        //console.log(values.at(0).Age);
-        for(let x = 0; x < 89; x++){
-          //console.log(values.at(x));
-            if(values[0].at(x).Age <= 18){
-                children++;
-        //console.log(children);
-            }else if(values[0].at(x).Age <= 65){
-                adults++;
-        //console.log(adults);
-            }else{
-                elders++;
-        //console.log(elders);
-            }
-        }
-    });
+  var x1 = d3.scaleBand()
+      .domain(demoData1.map(function (d) { return d.key; }))
+      .range([0, 3])
+      .padding(2);
 
-    var svg = d3.select("#SVG1")
-      .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-      .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-    
-    var data = {a: children, b: adults, c:elders}
-    
-    var color = d3.scaleOrdinal()
-      //.domain(data)
-      .range(["#98abc5", "#8a89a6", "#7b6888"])
-    
-    var pie = d3.pie()
-      .value(function(d) {return d.value; })
-    var data_ready = pie(Object.entries(data))
-    
-    svg
-      .selectAll('whatever')
-      .data(data_ready)
-      .enter()
-      .append('path')
-      .attr('d', d3.arc()
-        .innerRadius(100)         // This is the size of the donut hole
-        .outerRadius(radius)
-      )
-      .attr('fill', function(d){ return(color(d.data.key)) })
+  var xAxis1 = d3.axisBottom(x1);
+
+  var y1 = d3.scaleLinear()
+      .domain([65, 0])
+      .range([0, 250])
+  var yAxis1 = d3.axisLeft(y1);
+
+  g.append('g').call(xAxis1).attr('transform', 'translate(' + 70 + ', ' + 340 + ')').style("font-size", "14px");
+  g.append('g').call(yAxis1).attr('transform', 'translate(' + 70 + ', ' + 90 + ')').style("font-size", "14px");
+
+  var rects1 = g.selectAll("bar")
+      .data(demoData1)
+      .enter().append("rect")
       .attr("stroke", "black")
-      .style("stroke-width", "2px")
-      .style("opacity", 0.7)
-    
-    });
+      .style("stroke-width", "1px")
+      .attr("x", function (d) { return x1(d.key); })
+      .attr("y", function (d) { return y1(d.value); })
+      .attr("width", x1.bandwidth())
+      .attr("height", function (d) { return 250 - y1(d.value); })
+      .attr('transform', 'translate(' + 70 + ', ' + 90 + ')').style("font-size", "14px")
+      .attr("fill", "#761A24")
+}
