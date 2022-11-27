@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function DrawBarChart() {
-  const svg = d3.select('#SVG1');
+  const svg = d3.select('#PieChart');
   svg.select('g').remove();
   var g = svg.append("g").attr("transform", "translate(0,0)")
 

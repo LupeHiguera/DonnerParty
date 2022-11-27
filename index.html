@@ -9,8 +9,6 @@
     <script src="JS/main.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="CSS/default.css" />
-    <link rel="stylesheet" href="CSS/LineGraph.css" />
-    <link rel="stylesheet" href="CSS/SlopeGraph.css" />
 </head>
 
 <body>
@@ -21,85 +19,128 @@
         <h3 class="center">Alexander Wong - acwong7@asu.edu</h3>
         <h3 class="center">Damon Williams - dcwill15@asu.edu</h3>
     </div>
-    <br />
-    <svg id="SVG1"></svg>
-    <br />
-    <svg class="svg2" id="SVG2"></svg>
-    <br />
+
+    <div class="container" id="introduction">
+        <p>
+            In the age of manifest destiny, America is ripe for taking by eager settlers.
+            Settlers who are looking for a home, hopes of riches or for the search of a better life.
+            This is the dream of many. Yet, in the harsh Sierra Nevada mountains, a group of 80 or so migrants are trapped by a nightmare of snow.
+            A gruesome tale where survivors were forced to eat their beloved dogs, travel companions and even family members to survive.
+            This is the story of the ill-fated Donner party.
+        </p>
+    </div>
+
+    <div class="container" id="hastings">
+        <p style="float:left">
+            The story of the Donner party starts with a lawyer by the name of Lansford Hastings. Hastings is not a member of the party, but he was
+            indirectly responsible for the death of the migrants. Hastings was a man of opportunity. Back in the 1840's, California and Oregon were the destinations
+            of westbound migrants. California was not part of the US, but part of Mexico.
+        </p>
+        <img src="Pictures/hastings.jpg" alt="Hastings" style="float:right">
+        <p>
+            Hastings saw the wondrous land of California. Land that is not owned by white men. Hastings who was full of good old Manifest destiny thought of a plan. Hastings knew
+            if he can get enough white settlers to Atla California, the white settlers can overthrow the Mexicans and Hastings can become king of a new country. Hastings had to find a way
+            to get people to come to Alta California. The best way Hastings thought was for a shortcut.
+        </p>
+        <p>
+            Hastings was not an explorer but a lawyer. And as any good lawyer would do, to make their crazy idea of overthrowing a local government. Hastings opened a map up, drew a line and said.
+            "That's the shortcut". Hastings begun to advertise his shortcut to unsuspecting pioneers. He never did take the shortcut until people attempted to cross it.
+            Instead of a well established trail, anyone fooled by Hasting's cutoff would be forced to literally carve their own way to California.
+            Cutting down trees, moving boulders, hauling wagons up a mountain with teams of oxen and other beasts.
+        </p>
+    </div>
+
+
+
+    <!-- HTML for Pie Graph -->
+    <div class="container">
+        <svg id="PieChart"></svg>
+    </div>
+    <!-- HTML for Deaths Bar Graph -->
+    <div class="container">
+        <svg class="svg2" id="BarCharts"></svg>
+    </div>
 
     <!-- HTML for Deaths By Month Line Graph -->
-    <div class="LineGraphContainer">
-        <div class="LineGraphLeft">
-            <div id="LineGraphLeft1">
-                <label style="margin-left: 10px">Deaths By Month</label>
-                <svg class="svg3" id="SVG3"></svg>
+    <div class="container">
+        <div class="LineGraphContainer">
+            <div class="LineGraphLeft">
+                <div id="LineGraphLeft1">
+                    <label style="margin-left: 10px">Deaths By Month</label>
+                    <svg class="svg3" id="SVG3"></svg>
+                </div>
             </div>
-        </div>
-        <div class="LineGraphRight">
-            <div>
-                <label style="margin-left: 40px;">Gender</label>
-                <select name="LineGraphDataSelectGender" id="LineGraphDataSelectGender" class="LineGraphSelect">
-                    <option value="All">All</option>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                </select>
-                <label style="margin-left: 40px;">Age</label>
-                <select name="LineGraphDataSelectAge" id="LineGraphDataSelectAge" class="LineGraphSelect">
-                    <option value="All">All</option>
-                    <option value="AgeGroup1">0-18</option>
-                    <option value="AgeGroup2">19-30</option>
-                    <option value="AgeGroup3">31-50</option>
-                    <option value="AgeGroup4">50+</option>
-                </select>
-                <label style="margin-left: 40px;">Death Reason</label>
-                <select name="LineGraphDataSelectDeathReason" id="LineGraphDataSelectDeathReason"
-                    class="LineGraphSelect">
-                    <option value="All">All</option>
-                    <option value="Illness">Illness</option>
-                    <option value="Non-Firearm Homicide">Non-Firearm Homicide</option>
-                    <option value="Firearm Homicide">Firearm Homicide</option>
-                    <option value="Starvation">Starvation</option>
-                    <option value="Hypothermia">Hypothermia</option>
-                    <option value="Unknown">Unknown</option>
-                </select>
-                <label style="margin-left: 40px;">Death Outcome</label>
-                <select name="LineGraphDataSelectDeathOutcome" id="LineGraphDataSelectDeathOutcome"
-                    class="LineGraphSelect">
-                    <option value="All">All</option>
-                    <option value="Buried">Buried</option>
-                    <option value="Cannibalized">Cannibalized</option>
-                    <option value="Left behind">Left behind</option>
-                    <option value="Unknown">Unknown</option>
-                </select>
-                <button style="margin-left: 40px; margin-top: 10px;" onclick="LineGraphDrawGraph();">Generate
-                    Graph</label>
-            </div>
-        </div>
-    </div>
-
-    <div class="SlopeGraphContainer">
-        <div class="SlopeGraphLeft">
-            <div id="SlopeGraphLeft1">
-                <label style="margin-left: 10px">Person -> Outcome</label>
-                <label> - Show Survivors?</label>
-                <select name="SlopeGraphSelect" id="SlopeGraphSelect">
-                    <option value="ShowSurvivors">Show Survivors</option>
-                    <option value="Don'tShowSurvivors">Don't Show Survivors</option>
-                </select>
-                <button onclick="SlopeGraphDrawGraph()">Generate Graph</button>
-                <svg class="svg4" id="SVG4"></svg>
+            <div class="LineGraphRight">
+                <div>
+                    <label style="margin-left: 40px;">Gender</label>
+                    <select name="LineGraphDataSelectGender" id="LineGraphDataSelectGender" class="LineGraphSelect">
+                        <option value="All">All</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                    <label style="margin-left: 40px;">Age</label>
+                    <select name="LineGraphDataSelectAge" id="LineGraphDataSelectAge" class="LineGraphSelect">
+                        <option value="All">All</option>
+                        <option value="AgeGroup1">0-18</option>
+                        <option value="AgeGroup2">19-30</option>
+                        <option value="AgeGroup3">31-50</option>
+                        <option value="AgeGroup4">50+</option>
+                    </select>
+                    <label style="margin-left: 40px;">Death Reason</label>
+                    <select name="LineGraphDataSelectDeathReason" id="LineGraphDataSelectDeathReason"
+                            class="LineGraphSelect">
+                        <option value="All">All</option>
+                        <option value="Illness">Illness</option>
+                        <option value="Non-Firearm Homicide">Non-Firearm Homicide</option>
+                        <option value="Firearm Homicide">Firearm Homicide</option>
+                        <option value="Starvation">Starvation</option>
+                        <option value="Hypothermia">Hypothermia</option>
+                        <option value="Unknown">Unknown</option>
+                    </select>
+                    <label style="margin-left: 40px;">Death Outcome</label>
+                    <select name="LineGraphDataSelectDeathOutcome" id="LineGraphDataSelectDeathOutcome"
+                            class="LineGraphSelect">
+                        <option value="All">All</option>
+                        <option value="Buried">Buried</option>
+                        <option value="Cannibalized">Cannibalized</option>
+                        <option value="Left behind">Left behind</option>
+                        <option value="Unknown">Unknown</option>
+                    </select>
+                    <button style="margin-left: 40px; margin-top: 10px;" onclick="LineGraphDrawGraph();">Generate
+                        <label>Graph</label>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-    <br />
-    <svg id="SVG4"></svg>
-    <br />
-    <svg id="SVG5"></svg>
-    <br />
-    <svg id="SVG6"></svg>
-    <br />
-    <svg id="SVG7"></svg>
-    <br />
+    <div class="container">
+        <div class="SlopeGraphContainer">
+            <div class="SlopeGraphLeft">
+                <div id="SlopeGraphLeft1">
+                    <label style="margin-left: 10px">Person -> Outcome</label>
+                    <label> - Show Survivors?</label>
+                    <label for="SlopeGraphSelect"></label><select name="SlopeGraphSelect" id="SlopeGraphSelect">
+                        <option value="ShowSurvivors">Show Survivors</option>
+                        <option value="Don'tShowSurvivors">Don't Show Survivors</option>
+                    </select>
+                    <button onclick="SlopeGraphDrawGraph()">Generate Graph</button>
+                    <svg class="svg4" id="SVG4"></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <svg id="SVG4"></svg>
+    </div>
+    <div class="container">
+        <svg id="SVG5"></svg>
+    </div>
+    <div class="container">
+        <svg id="SVG6"></svg>
+    </div>
+    <div class="container">
+        <svg id="SVG7"></svg>
+    </div>
 </body>
 
 </html>

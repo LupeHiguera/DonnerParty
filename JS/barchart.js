@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function DrawBarCharts() {
     // selects the svg2 and clears it
-    const svg = d3.select('#SVG2');
+    const svg = d3.select('#BarCharts');
     svg.select('g').remove();
     var g = svg.append("g").attr("transform", "translate(0,0)")
 

@@ -52,7 +52,7 @@ function SlopeGraphDrawGraph() {
 
     var selectResult = document.getElementById("SlopeGraphSelect").value;
     console.log(selectResult);
-    if (selectResult == "ShowSurvivors") {
+    if (selectResult === "ShowSurvivors") {
         leftScaleBandDomain = leftScaleBand;
         dataSetHolder = SlopeGraphData;
         leftScaleOffset = 8;
