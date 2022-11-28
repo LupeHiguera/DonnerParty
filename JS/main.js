@@ -1,7 +1,7 @@
 var totalData = [
-  { key: "totalKids", value: 0 },
-  { key: "totalAdults", value: 0 },
-  { key: "totalElders", value: 0 },
+  { key: "Total Kids", value: 0, color: "#e7c7e5" },
+  { key: "Total Adults", value: 0, color: "#c7e7c9" },
+  { key: "Total Seniors", value: 0, color: "#cceaea" },
 ]
 
 
@@ -31,11 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function DrawBarChart() {
 
-      var width = 360;
+      var width = 600;
       var height = 360;
       var radius = Math.min(width, height) / 2;
       var donutWidth = 75;
 
+      
       var svg = d3.select('#PieChart')
         .append('svg')
         .attr('width', width)
@@ -51,13 +52,24 @@ function DrawBarChart() {
       var pie = d3.pie()
         .value(function(d) { return d.value; })
         .sort(null);
+        
+        var dataReady = pie(totalData);
 
-      var path = svg.selectAll('path')
-        .data(pie(totalData))
+      svg.selectAll('slice')
+        .data(dataReady)
         .enter()
         .append('path')
         .attr('d', arc)
         .attr("stroke", "white")
-        .attr("fill", "#AFE1AF");
+        .attr("fill", function(d) { return d.data.color} );
+
+        svg.selectAll('slice')
+          .data(dataReady)
+          .enter()
+          .append('text')
+          .text(function(d) {return d.data.key})
+          .style("text-anchor", "middle")
+          .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")";  })
+        .style("font-size", 17);
 
 }
