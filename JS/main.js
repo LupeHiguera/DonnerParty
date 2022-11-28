@@ -1,4 +1,4 @@
-var demoData1 = [
+var totalData = [
   { key: "totalKids", value: 0 },
   { key: "totalAdults", value: 0 },
   { key: "totalElders", value: 0 },
@@ -14,56 +14,50 @@ document.addEventListener('DOMContentLoaded', function () {
           for (let i = 0; i < data.length; i++) {
               holder = data[i];
               if (Number(holder["Age"]) <= 18) {
-                  demoData1[0].value++;
+                totalData[0].value++;
               }
-              else if (Number(holder["Age"]) >= 19) {
-                  demoData1[1].value++;
+              else if (Number(holder["Age"]) >= 19 &&
+              Number(holder["Age"]) <= 64) {
+                totalData[1].value++;
               }
               else {
-                  demoData1[2].value++;
+                totalData[2].value++;
               }
           }
-          console.log(demoData1);
+          console.log(totalData);
           DrawBarChart();
       })
 });
 
 function DrawBarChart() {
-  const svg = d3.select('#PieChart');
-  svg.select('g').remove();
-  var g = svg.append("g").attr("transform", "translate(0,0)")
 
-  g.append('text')
-      .attr('x', '65')
-      .attr('y', '50')
-      .text("Age Distributions")
-      .style("font-size", "20px")
+      var width = 360;
+      var height = 360;
+      var radius = Math.min(width, height) / 2;
+      var donutWidth = 75;
 
+      var svg = d3.select('#PieChart')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height)
+        .append('g')
+        .attr('transform', 'translate(' + (width / 2) + 
+          ',' + (height / 2) + ')');
 
-  var x1 = d3.scaleBand()
-      .domain(demoData1.map(function (d) { return d.key; }))
-      .range([0, 3])
-      .padding(2);
+      var arc = d3.arc()
+        .innerRadius(radius - donutWidth)
+        .outerRadius(radius);
+        
+      var pie = d3.pie()
+        .value(function(d) { return d.value; })
+        .sort(null);
 
-  var xAxis1 = d3.axisBottom(x1);
+      var path = svg.selectAll('path')
+        .data(pie(totalData))
+        .enter()
+        .append('path')
+        .attr('d', arc)
+        .attr("stroke", "white")
+        .attr("fill", "#AFE1AF");
 
-  var y1 = d3.scaleLinear()
-      .domain([65, 0])
-      .range([0, 250])
-  var yAxis1 = d3.axisLeft(y1);
-
-  g.append('g').call(xAxis1).attr('transform', 'translate(' + 70 + ', ' + 340 + ')').style("font-size", "14px");
-  g.append('g').call(yAxis1).attr('transform', 'translate(' + 70 + ', ' + 90 + ')').style("font-size", "14px");
-
-  var rects1 = g.selectAll("bar")
-      .data(demoData1)
-      .enter().append("rect")
-      .attr("stroke", "black")
-      .style("stroke-width", "1px")
-      .attr("x", function (d) { return x1(d.key); })
-      .attr("y", function (d) { return y1(d.value); })
-      .attr("width", x1.bandwidth())
-      .attr("height", function (d) { return 250 - y1(d.value); })
-      .attr('transform', 'translate(' + 70 + ', ' + 90 + ')').style("font-size", "14px")
-      .attr("fill", "#761A24")
 }
