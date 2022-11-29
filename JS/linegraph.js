@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             baseData = holder;
             data = holder;
             //console.log(baseData);
+            LineGraphDrawGraph();
         })
 });
 

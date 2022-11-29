@@ -10,19 +10,19 @@ document.addEventListener('DOMContentLoaded', function () {
             for (let i = 0; i < data.length; i++) {
                 holder = data[i];
                 if (Number(holder["Age"]) <= 18) {
-                  totalData[0].value++;
+                    totalData[0].value++;
                 }
                 else if (Number(holder["Age"]) >= 19 &&
-                Number(holder["Age"]) <= 64) {
-                  totalData[1].value++;
+                    Number(holder["Age"]) <= 64) {
+                    totalData[1].value++;
                 }
                 else {
-                  totalData[2].value++;
+                    totalData[2].value++;
                 }
             }
             drawBubbleMap();
         })
-  });
+});
 
 function drawBubbleMap() {
     // hover followed from
@@ -33,14 +33,19 @@ function drawBubbleMap() {
     svg.select('g').remove();
     const g = svg.append("g").attr("transform", "translate(0,0)");
 
+    /*
     let div = d3.select("#BubbleMap").append("div")
         .attr("id", "tooltip-bubble")
-        .style("opacity", 0);
+        .style("opacity", 0);*/
 
     let kansasDeaths = 1;
     let utahDeaths = 1;
     let nevedaDeaths = 2;
     let donnerMassacre = 36;
+
+    var div = d3.select("body").append("div")
+        .attr("class", "tooltip-donut")
+        .style("opacity", 0);
 
     // also followed from here
     //https://d3-graph-gallery.com/graph/interactivity_tooltip.html#template
@@ -55,14 +60,14 @@ function drawBubbleMap() {
         .style("border-radius", "5px")
         .style("padding", "5px");
 
-    const Mouseover = function(d){
+    const Mouseover = function (d) {
         Tooltip
             .html("Number of deaths is " + d.value)
             .style("top", (d3.mouse(this)[1]) + "px")
-            .style("left", (d3.mouse(this)[0]+70) + "px")
+            .style("left", (d3.mouse(this)[0] + 70) + "px")
     }
 
-    var mouseover = function(d) {
+    var mouseover = function (d) {
         Tooltip
             .style("opacity", 1)
         d3.select(this)
@@ -70,7 +75,7 @@ function drawBubbleMap() {
             .style("opacity", 1)
     }
 
-    var mouseleave = function(d) {
+    var mouseleave = function (d) {
         Tooltip
             .style("opacity", 0)
         d3.select(this)
@@ -80,32 +85,34 @@ function drawBubbleMap() {
 
     //adds the usa map
     g.append("svg:image")
-    .attr('x', '-350')
-    .attr('y', '-100')
-    .attr('width', '1750')
-    .attr('height', '750')
-    .attr('xlink:href', "Pictures/US-Blank-map.jpg");
+        .attr('x', '-350')
+        .attr('y', '-100')
+        .attr('width', '1750')
+        .attr('height', '750')
+        .attr('xlink:href', "Pictures/US-Blank-map.jpg");
 
     // should be 1 death out of 40
     // Kansas circle
     g.append("circle")
-    .attr('cx', '525')
-    .attr('cy', '290')
-    .attr('r', '3')
-    .attr('fill', 'red')
-    .attr('stroke', 'black')
-    .style('opacity', '0.5')
-        .on('mouseover', function (d, i){
+        .attr('cx', '525')
+        .attr('cy', '290')
+        .attr('r', '3')
+        .attr('fill', 'red')
+        .attr('stroke', 'black')
+        .style('opacity', '0.5')
+        .on('mouseover', function (d, i) {
             d3.select(this).transition()
                 .duration('50')
                 .attr('fill', 'pink');
             div.transition()
-                .duration(50)
-                .style("opacity", '1');
-            Tooltip
-                .html("Number of deaths was : 1")
+                .duration(1)
+                .style("opacity", 1);
+            var string = "Kansas" + "<br />" + "1 Death(s)"
+            div.html(string)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 35) + "px");
         })
-        .on('mouseout', function(d, i){
+        .on('mouseout', function (d, i) {
             d3.select(this).transition()
                 .duration('50')
                 .attr('fill', 'red');
@@ -119,21 +126,25 @@ function drawBubbleMap() {
     // should be 1 death out of 40
     // Utah circle
     g.append("circle")
-    .attr('cx', '245')
-    .attr('cy', '210')
-    .attr('r', '3')
-    .attr('fill', 'red')
-    .attr('stroke', 'black')
-    .style('opacity', '0.5')
-        .on('mouseover', function (d, i){
+        .attr('cx', '245')
+        .attr('cy', '210')
+        .attr('r', '3')
+        .attr('fill', 'red')
+        .attr('stroke', 'black')
+        .style('opacity', '0.5')
+        .on('mouseover', function (d, i) {
             d3.select(this).transition()
                 .duration('50')
                 .attr('fill', 'pink');
             div.transition()
-                .duration(50)
-                .style("opacity", '1');
+                .duration(1)
+                .style("opacity", 1);
+            var string ="Utah" + "<br />" + "1 Death(s)"
+            div.html(string)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 35) + "px");
         })
-        .on('mouseout', function(d, i){
+        .on('mouseout', function (d, i) {
             d3.select(this).transition()
                 .duration('50')
                 .attr('fill', 'red');
@@ -145,21 +156,25 @@ function drawBubbleMap() {
     // should be 36 deaths out of 40
     //on Donner lake
     g.append("circle")
-    .attr('cx', '80')
-    .attr('cy', '210')
-    .attr('r', '16')
-    .attr('fill', 'red')
-    .attr('stroke', 'black')
-    .style('opacity', '0.5')
-        .on('mouseover', function (d, i){
+        .attr('cx', '80')
+        .attr('cy', '210')
+        .attr('r', '16')
+        .attr('fill', 'red')
+        .attr('stroke', 'black')
+        .style('opacity', '0.5')
+        .on('mouseover', function (d, i) {
             d3.select(this).transition()
                 .duration('50')
                 .attr('fill', 'pink');
             div.transition()
-                .duration(50)
-                .style("opacity", '1');
+                .duration(1)
+                .style("opacity", 1);
+            var string = "Donner Lake" + "<br />" +"36 Death(s)"
+            div.html(string)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 35) + "px");
         })
-        .on('mouseout', function(d, i){
+        .on('mouseout', function (d, i) {
             d3.select(this).transition()
                 .duration('50')
                 .attr('fill', 'red');
@@ -171,21 +186,25 @@ function drawBubbleMap() {
     // About 2 deaths out of 40
     //to the right of the lake
     g.append("circle")
-    .attr('cx', '100')
-    .attr('cy', '210')
-    .attr('r', '5')
-    .attr('fill', 'red')
-    .attr('stroke', 'black')
-    .style('opacity', '0.5')
-        .on('mouseover', function (d, i){
+        .attr('cx', '100')
+        .attr('cy', '210')
+        .attr('r', '5')
+        .attr('fill', 'red')
+        .attr('stroke', 'black')
+        .style('opacity', '0.5')
+        .on('mouseover', function (d, i) {
             d3.select(this).transition()
                 .duration('50')
                 .attr('fill', 'pink');
-            div.transition()
-                .duration(50)
-                .style("opacity", '1');
+                div.transition()
+                .duration(1)
+                .style("opacity", 1);
+            var string ="Nevada" + "<br />" + "2 Death(s)"
+            div.html(string)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 35) + "px");
         })
-        .on('mouseout', function(d, i){
+        .on('mouseout', function (d, i) {
             d3.select(this).transition()
                 .duration('50')
                 .attr('fill', 'red');
