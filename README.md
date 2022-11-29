@@ -47,6 +47,14 @@ This graph allows users to filter by certain statistics, like gender, age, and d
 This is an especially interesting graph because it allows users to interact and visualize the different trends for 
 different demographics over the course of the expedition. Next we have a visualization that links each member of the party to a specific outcome.
 
+![](img4.png)
+
+This graph allows users to map groups of members of the donner party to certain outcomes, it also includes an interactive component where you can sort by just the members who died. 
+
+![](img5.png)
+
+This graph depicts a map and each blip on the map shows where an individual died, for points where multiple individuals died the corresponding bubble grows in size
+
 **Reflection:**
 
 The conversion of this project from Initial proposal to WIP was incredibly simple, our initial set of tasks were to create an outline of the project. This allowed us to designate certain spaces for each of the SVG’s as well as the text descriptions, css, and js files. Starting the project off like this allowed us to simultaneously work on the project without worrying about creating conflicts. After we had this outline done we started working on the implementations, the first 4 implementations were straight forward for our team and well within the scope of what we had anticipated. The final two, however, were a bit more complex and time consuming than we had anticipated. Our innovative view, in particular, has seen some revisions since the proposal because we felt it was a tad too complex for the time we had to complete the project. We’ve simplified that view down to a degree but it should still have a similar function to what we originally intended. If we had to do the project over again I would say that we would do 6 visualizations that are more conventional, and make a 7th innovative view as a stretch goal if we have time, in order to alleviate some of the pressure. 
