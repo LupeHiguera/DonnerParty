@@ -62,6 +62,6 @@ The conversion of this project from Initial proposal to WIP was incredibly simpl
 **Team Worked:**
 
 The Pie Chart was completed by Damon, as well as the initial outline of the project. Wip Documentation, and Final Write Up were also greatly contributed to by Damon.
-The Innovative view was completed by Guadalupe. Guadalupe also made great contributions to the WIP Documentation and Poster. 
+The bubble view was completed by Guadalupe. Guadalupe also made great contributions to the WIP Documentation. 
 The Bubble map was completed by Vincent with some help from Guadalupe. 
 Alexander completed the Bar chart, Line Graph, and Slope Graph.
