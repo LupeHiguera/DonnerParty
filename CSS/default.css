@@ -1,3 +1,7 @@
+img{
+    max-width:600px;
+    max-height:600px;
+}
 .center {
     text-align: center;
 }

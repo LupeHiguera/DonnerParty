@@ -33,16 +33,6 @@ function drawBubbleMap() {
     svg.select('g').remove();
     const g = svg.append("g").attr("transform", "translate(0,0)");
 
-    /*
-    let div = d3.select("#BubbleMap").append("div")
-        .attr("id", "tooltip-bubble")
-        .style("opacity", 0);*/
-
-    let kansasDeaths = 1;
-    let utahDeaths = 1;
-    let nevedaDeaths = 2;
-    let donnerMassacre = 36;
-
     var div = d3.select("body").append("div")
         .attr("class", "tooltip-donut")
         .style("opacity", 0);

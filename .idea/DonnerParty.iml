@@ -11,5 +11,6 @@
     <orderEntry type="library" name="@types/ace" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="d3.v7" level="application" />
+    <orderEntry type="library" name="d3.geo.projection.v0" level="application" />
   </component>
 </module>
