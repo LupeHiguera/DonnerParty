@@ -26,18 +26,18 @@ document.addEventListener('DOMContentLoaded', function () {
             let holder;
             for (let i = 0; i < data.length; i++) {
                 holder = data[i];
-                if (holder["Sex"] == "M") {
+                if (holder["Sex"] == "M"  && holder["Age"] >= 18) {
                     demoData1[0].value++; // total males
                     if (holder["Marital Status"] == "M") {
                         demoData3[0].value++; // male married
                         demoData2[0].value++; // total married
                     }
-                    else if (holder["Marital Status"] == "S") {
+                    else if (holder["Marital Status"] == "S" && holder["Age"]) {
                         demoData3[1].value++; // male single
                         demoData2[1].value++; // total single
                     }
                 }
-                else if (holder["Sex"] == "F") {
+                else if (holder["Sex"] == "F" && holder["Age"] >= 18) {
                     demoData1[1].value++; // total females
                     if (holder["Marital Status"] == "M") {
                         demoData3[2].value++; // female married
@@ -49,9 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             }
-            //console.log(demoData1);
-            //console.log(demoData2);
-            //console.log(demoData3);
             DrawBarCharts();
         })
 });
@@ -71,14 +68,14 @@ function DrawBarCharts() {
 
     g.append('text')
         .attr('x', '110')
-        .attr('y', '100')
-        .text("56")
+        .attr('y', '130')
+        .text("27")
         .style("font-size", "20px")
 
     g.append('text')
         .attr('x', '205')
-        .attr('y', '195')
-        .text("33")
+        .attr('y', '215')
+        .text("16")
         .style("font-size", "20px")
 
 
@@ -92,7 +89,7 @@ function DrawBarCharts() {
 
     // creates yScale for demoData1
     var y1 = d3.scaleLinear()
-        .domain([65, 0])
+        .domain([35, 0])
         .range([0, 250])
     var yAxis1 = d3.axisLeft(y1);
 
@@ -122,14 +119,14 @@ function DrawBarCharts() {
 
     g.append('text')
         .attr('x', '375')
-        .attr('y', '230')
-        .text("25")
+        .attr('y', '150')
+        .text("24")
         .style("font-size", "20px")
 
     g.append('text')
         .attr('x', '460')
-        .attr('y', '90')
-        .text("62")
+        .attr('y', '200')
+        .text("17")
         .style("font-size", "20px")
 
     var x2 = d3.scaleBand()
@@ -140,7 +137,7 @@ function DrawBarCharts() {
     var xAxis2 = d3.axisBottom(x2);
 
     var y2 = d3.scaleLinear()
-        .domain([65, 0])
+        .domain([35, 0])
         .range([0, 250])
     var yAxis2 = d3.axisLeft(y2);
 
@@ -169,26 +166,26 @@ function DrawBarCharts() {
 
     g.append('text')
     .attr('x', '625')
-    .attr('y', '275')
+    .attr('y', '250')
     .text("13")
     .style("font-size", "20px")
 
     g.append('text')
     .attr('x', '720')
-    .attr('y', '160')
-    .text("43")
+    .attr('y', '215')
+    .text("17")
     .style("font-size", "20px")
 
     g.append('text')
     .attr('x', '815')
-    .attr('y', '280')
+    .attr('y', '250')
     .text("12")
     .style("font-size", "20px")
 
     g.append('text')
-    .attr('x', '910')
-    .attr('y', '255')
-    .text("19")
+    .attr('x', '917')
+    .attr('y', '320')
+    .text("2")
     .style("font-size", "20px")
 
     var x3 = d3.scaleBand()
@@ -199,7 +196,7 @@ function DrawBarCharts() {
     var xAxis3 = d3.axisBottom(x3);
 
     var y3 = d3.scaleLinear()
-        .domain([65, 0])
+        .domain([35, 0])
         .range([0, 250])
     var yAxis3 = d3.axisLeft(y3);
 
